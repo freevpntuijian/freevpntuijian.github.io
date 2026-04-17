@@ -303,24 +303,9 @@ opkg install v2ray-core
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>SSR 的混淆和协议设置如何选择才能绕过封锁？</h5></div>
+    <div class="panel-heading"><h5>VLess 使用 XTLS 时证书怎么配置更安全？</h5></div>
     <div class="panel-body">
-        选择模拟 HTTPS 的混淆方式如 tls1.2_ticket_auth，并搭配 AEAD 或协议插件，可以有效隐藏流量特征，降低被封锁风险。不同网络环境需测试选择最优组合。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Hysteria2 多路复用对高频连接的优势？</h5></div>
-    <div class="panel-body">
-        多路复用可让多个短连接共享同一通道，减少握手和加密开销，提高吞吐量。适合高频短连接场景，如即时通讯和游戏，保证流量快速、稳定传输。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Hysteria2 的多路复用功能有哪些优势？</h5></div>
-    <div class="panel-body">
-        多路复用允许多个请求共享同一 QUIC 连接，减少握手次数和延迟。高并发情况下可以提升吞吐量和稳定性，特别适合短连接频繁请求的应用，如游戏或即时通讯。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>SSR 协议的多路复用功能如何提升性能？</h5></div>
-    <div class="panel-body">
-        SSR 多路复用允许多个短连接共享同一通道，减少握手次数和加密开销。适合游戏、即时通讯等高频短连接场景，提升网络吞吐量和连接稳定性，提高整体上网体验。<hr />    </div>
+        推荐使用可信 CA 签发的证书（例如 Let's Encrypt），并为服务器配置正确的域名、SNI 与证书链。避免使用自签名证书或错误域名，以免被客户端拒绝或被中间人攻击检测到。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>WinXray 的 PAC 模式如何应用？</h5></div>
@@ -328,14 +313,9 @@ opkg install v2ray-core
         PAC 模式根据规则自动判断流量是否走代理，无需手动切换节点。适合访问国内外混合网站环境，提高网络访问速度和稳定性，减少误操作导致的访问失败。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>SSR 的协议参数和混淆参数如何配置最安全？</h5></div>
+    <div class="panel-heading"><h5>V2Ray 中的 alterId 是什么，现在还有必要配置吗？</h5></div>
     <div class="panel-body">
-        选择 AEAD 或协议插件可提升安全性，混淆方式如 tls1.2_ticket_auth 可以模拟正常 HTTPS 流量。合理搭配协议和混淆参数，能够有效抵御 DPI 检测和流量封锁。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>VLess 使用 XTLS 时证书怎么配置更安全？</h5></div>
-    <div class="panel-body">
-        推荐使用可信 CA 签发的证书（例如 Let's Encrypt），并为服务器配置正确的域名、SNI 与证书链。避免使用自签名证书或错误域名，以免被客户端拒绝或被中间人攻击检测到。<hr />    </div>
+        alterId 曾用于 VMess 的用户混淆机制以防止重放攻击，但在 V2Ray 新版本与 VLess 出现后，alterId 已不再推荐使用。现代配置多使用 UUID 或直接迁移至 VLess/XTLS 以获得更好性能与安全性。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>WinXray 的节点延迟过高怎么办？</h5></div>
@@ -343,14 +323,34 @@ opkg install v2ray-core
         可通过策略组切换低延迟节点，或调整传输协议和端口。检查服务器网络和防火墙设置，确保网络通畅。必要时可启用 MUX 功能减少短连接延迟，提高整体网络体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>SSR 协议的多路复用功能如何提升性能？</h5></div>
+    <div class="panel-body">
+        SSR 多路复用允许多个短连接共享同一通道，减少握手次数和加密开销。适合游戏、即时通讯等高频短连接场景，提升网络吞吐量和连接稳定性，提高整体上网体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>SSR 的协议参数和混淆参数如何配置最安全？</h5></div>
+    <div class="panel-body">
+        选择 AEAD 或协议插件可提升安全性，混淆方式如 tls1.2_ticket_auth 可以模拟正常 HTTPS 流量。合理搭配协议和混淆参数，能够有效抵御 DPI 检测和流量封锁。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Hysteria2 的多路复用功能有哪些优势？</h5></div>
+    <div class="panel-body">
+        多路复用允许多个请求共享同一 QUIC 连接，减少握手次数和延迟。高并发情况下可以提升吞吐量和稳定性，特别适合短连接频繁请求的应用，如游戏或即时通讯。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>SSR 的混淆和协议设置如何选择才能绕过封锁？</h5></div>
+    <div class="panel-body">
+        选择模拟 HTTPS 的混淆方式如 tls1.2_ticket_auth，并搭配 AEAD 或协议插件，可以有效隐藏流量特征，降低被封锁风险。不同网络环境需测试选择最优组合。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>Hysteria2 如何提升网速？</h5></div>
     <div class="panel-body">
         Hysteria2 利用 QUIC 协议的低延迟特性，并通过自适应拥塞控制算法在高丢包网络下维持高速连接。配置合适的带宽参数与 TLS 证书，可显著提升跨境访问速度。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 中的 alterId 是什么，现在还有必要配置吗？</h5></div>
+    <div class="panel-heading"><h5>Hysteria2 多路复用对高频连接的优势？</h5></div>
     <div class="panel-body">
-        alterId 曾用于 VMess 的用户混淆机制以防止重放攻击，但在 V2Ray 新版本与 VLess 出现后，alterId 已不再推荐使用。现代配置多使用 UUID 或直接迁移至 VLess/XTLS 以获得更好性能与安全性。    </div>
+        多路复用可让多个短连接共享同一通道，减少握手和加密开销，提高吞吐量。适合高频短连接场景，如即时通讯和游戏，保证流量快速、稳定传输。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -379,16 +379,16 @@ opkg install v2ray-core
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-1-24-share-vpn.htm" title="免费VPN推荐 | 1月24日20M/S|免费Shadowrocket节点/Trojan节点/V2ray节点/SSR节点/Clash节点/Singbox节点订阅节点地址">免费VPN推荐 | 1月24日20M/S|免费Shadowrocket节点/Trojan节点/V2ray节点/SSR节点/Clash节点/Singbox节点订阅节点地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-2-3-free-node-subscribe.htm" title="免费VPN推荐 | 2月3日18.7M/S|免费SSR节点/Trojan节点/V2ray节点/Shadowrocket节点/Clash节点/Singbox节点订阅节点地址">免费VPN推荐 | 2月3日18.7M/S|免费SSR节点/Trojan节点/V2ray节点/Shadowrocket节点/Clash节点/Singbox节点订阅节点地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-1-23-top-vpn.htm" title="免费VPN推荐 | 1月23日22.4M/S|免费Singbox节点/Shadowrocket节点/V2ray节点/Clash节点/Trojan节点/SSR节点订阅节点地址">免费VPN推荐 | 1月23日22.4M/S|免费Singbox节点/Shadowrocket节点/V2ray节点/Clash节点/Trojan节点/SSR节点订阅节点地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-12-node-share-links.htm" title="免费VPN推荐 | 3月12日22.6M/S|免费Trojan节点/Clash节点/Shadowrocket节点/SSR节点/Singbox节点/V2ray节点订阅节点地址">免费VPN推荐 | 3月12日22.6M/S|免费Trojan节点/Clash节点/Shadowrocket节点/SSR节点/Singbox节点/V2ray节点订阅节点地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-5-free-vpn-node.htm" title="免费VPN推荐 | 3月5日18.9M/S|免费Trojan节点/SSR节点/Clash节点/Shadowrocket节点/Singbox节点/V2ray节点订阅节点地址">免费VPN推荐 | 3月5日18.9M/S|免费Trojan节点/SSR节点/Clash节点/Shadowrocket节点/Singbox节点/V2ray节点订阅节点地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-8-vpn-node.htm" title="免费VPN推荐 | 3月8日18.3M/S|免费SSR节点/Shadowrocket节点/Singbox节点/Trojan节点/V2ray节点/Clash节点订阅节点地址">免费VPN推荐 | 3月8日18.3M/S|免费SSR节点/Shadowrocket节点/Singbox节点/Trojan节点/V2ray节点/Clash节点订阅节点地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-25-free-vpn-node.htm" title="免费VPN推荐 | 3月25日21.6M/S|免费SSR节点/V2ray节点/Shadowrocket节点/Singbox节点/Trojan节点/Clash节点订阅节点地址">免费VPN推荐 | 3月25日21.6M/S|免费SSR节点/V2ray节点/Shadowrocket节点/Singbox节点/Trojan节点/Clash节点订阅节点地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-26-free-vpn.htm" title="免费VPN推荐 | 3月26日19.2M/S|免费Clash节点/Trojan节点/Singbox节点/Shadowrocket节点/SSR节点/V2ray节点订阅节点地址">免费VPN推荐 | 3月26日19.2M/S|免费Clash节点/Trojan节点/Singbox节点/Shadowrocket节点/SSR节点/V2ray节点订阅节点地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-30-vpn-github.htm" title="免费VPN推荐 | 3月30日22.9M/S|免费Shadowrocket节点/V2ray节点/Trojan节点/SSR节点/Clash节点/Singbox节点订阅节点地址">免费VPN推荐 | 3月30日22.9M/S|免费Shadowrocket节点/V2ray节点/Trojan节点/SSR节点/Clash节点/Singbox节点订阅节点地址</a></li>
                         <li class="py-2"><a href="/free-nodes/2026-3-19-free-node-subscribe.htm" title="免费VPN推荐 | 3月19日19.7M/S|免费V2ray节点/Clash节点/Trojan节点/SSR节点/Shadowrocket节点/Singbox节点订阅节点地址">免费VPN推荐 | 3月19日19.7M/S|免费V2ray节点/Clash节点/Trojan节点/SSR节点/Shadowrocket节点/Singbox节点订阅节点地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-1-17-free-node-subscribe.htm" title="免费VPN推荐 | 1月17日19.7M/S|免费V2ray节点/Shadowrocket节点/Clash节点/Singbox节点/SSR节点/Trojan节点订阅节点地址">免费VPN推荐 | 1月17日19.7M/S|免费V2ray节点/Shadowrocket节点/Clash节点/Singbox节点/SSR节点/Trojan节点订阅节点地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-1-15-free-vpn.htm" title="免费VPN推荐 | 1月15日21.4M/S|免费SSR节点/V2ray节点/Clash节点/Singbox节点/Shadowrocket节点订阅节点地址">免费VPN推荐 | 1月15日21.4M/S|免费SSR节点/V2ray节点/Clash节点/Singbox节点/Shadowrocket节点订阅节点地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-1-mianfei-vpn.htm" title="免费VPN推荐 | 3月1日21.8M/S|免费Trojan节点/Clash节点/SSR节点/V2ray节点/Singbox节点/Shadowrocket节点订阅节点地址">免费VPN推荐 | 3月1日21.8M/S|免费Trojan节点/Clash节点/SSR节点/V2ray节点/Singbox节点/Shadowrocket节点订阅节点地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-2-1-top-vpn-node.htm" title="免费VPN推荐 | 2月1日20.5M/S|免费Singbox节点/Clash节点/SSR节点/Shadowrocket节点/V2ray节点/Trojan节点订阅节点地址">免费VPN推荐 | 2月1日20.5M/S|免费Singbox节点/Clash节点/SSR节点/Shadowrocket节点/V2ray节点/Trojan节点订阅节点地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-1-21-free-node-subscribe.htm" title="免费VPN推荐 | 1月21日19.7M/S|免费Trojan节点/Singbox节点/V2ray节点/Shadowrocket节点/SSR节点/Clash节点订阅节点地址">免费VPN推荐 | 1月21日19.7M/S|免费Trojan节点/Singbox节点/V2ray节点/Shadowrocket节点/SSR节点/Clash节点订阅节点地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-11-vpn-proxy.htm" title="免费VPN推荐 | 3月11日20.8M/S|免费Trojan节点/V2ray节点/Shadowrocket节点/SSR节点/Singbox节点/Clash节点订阅节点地址">免费VPN推荐 | 3月11日20.8M/S|免费Trojan节点/V2ray节点/Shadowrocket节点/SSR节点/Singbox节点/Clash节点订阅节点地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-12-node-share-links.htm" title="免费VPN推荐 | 3月12日22.6M/S|免费Trojan节点/Clash节点/Shadowrocket节点/SSR节点/Singbox节点/V2ray节点订阅节点地址">免费VPN推荐 | 3月12日22.6M/S|免费Trojan节点/Clash节点/Shadowrocket节点/SSR节点/Singbox节点/V2ray节点订阅节点地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-27-free-vpn.htm" title="免费VPN推荐 | 3月27日19.1M/S|免费SSR节点/Singbox节点/Clash节点/Shadowrocket节点/V2ray节点/Trojan节点订阅节点地址">免费VPN推荐 | 3月27日19.1M/S|免费SSR节点/Singbox节点/Clash节点/Shadowrocket节点/V2ray节点/Trojan节点订阅节点地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-9-free-vpn.htm" title="免费VPN推荐 | 3月9日19.1M/S|免费Shadowrocket节点/Trojan节点/V2ray节点/Clash节点/SSR节点/Singbox节点订阅节点地址">免费VPN推荐 | 3月9日19.1M/S|免费Shadowrocket节点/Trojan节点/V2ray节点/Clash节点/SSR节点/Singbox节点订阅节点地址</a></li>
                     </ul>
     </div>
 </div>
@@ -400,13 +400,10 @@ opkg install v2ray-core
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">28</span> <a href="/date/2026-03/" title="2026-03 归档">2026-03</a></h4>
+                <h4><span class="badge" style="float: right;">1</span> <a href="/date/2026-04/" title="2026-04 归档">2026-04</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2026-02/" title="2026-02 归档">2026-02</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">18</span> <a href="/date/2026-01/" title="2026-01 归档">2026-01</a></h4>
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2026-03/" title="2026-03 归档">2026-03</a></h4>
             </li>
                     </ul>
     </div>

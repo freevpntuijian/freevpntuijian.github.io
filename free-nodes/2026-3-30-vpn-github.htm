@@ -384,17 +384,18 @@ A4：可重新执行安装脚本，或者手动下载最新版本替换。</p>
 <div class="clearfix"></div>
 <div class="col-md-12 mt-5">
         <p>上一个：<a href="/free-nodes/2026-3-29-vpn-github.htm">免费VPN推荐 | 3月29日22.7M/S|免费Trojan节点/Singbox节点/SSR节点/Clash节点/Shadowrocket节点/V2ray节点订阅节点地址</a></p>
+        <p>下一个：<a href="/free-nodes/2026-4-2-free-node-subscribe-links.htm">免费VPN推荐 | 4月2日21.9M/S|免费SSR节点/V2ray节点/Trojan节点/Shadowrocket节点/Singbox节点/Clash节点订阅节点地址</a></p>
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Clash 运行在低配设备上卡顿，如何减轻资源占用？</h5></div>
+    <div class="panel-heading"><h5>SSR 的混淆插件有什么作用？</h5></div>
     <div class="panel-body">
-        减少 rule-provider 数量、关闭不必要的日志与统计、降低 DNS 轮询频率并禁用内置测速；若使用 TUN 模式，可改为代理模式减少内核负担。必要时升级到更高性能的设备或使用更轻量内核。<hr />    </div>
+        混淆插件用于伪装流量，使其看起来像普通的 HTTP 或 TLS 请求。常见类型有 plain、tls1.2_ticket_auth 等。合理设置混淆能有效降低被识别的风险，提升连接成功率。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Shadowrocket 能否自动更新订阅？</h5></div>
+    <div class="panel-heading"><h5>如何配置 Sing-box 使用 DoH 加密 DNS？</h5></div>
     <div class="panel-body">
-        支持。Shadowrocket 可以设置定时更新周期，例如每隔 12 小时或每天自动刷新订阅链接，确保节点列表保持最新状态。这样无需手动更新即可长期稳定使用。<hr />    </div>
+        在 dns 模块中添加类型为 doh 的上游，如 `https://1.1.1.1/dns-query`，并指定 bootstrap 地址。启用加密 DNS 可防止 DNS 泄露并加快国际解析速度，提高整体隐私保护。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Quantumult X 的“分流规则”如何管理？</h5></div>
@@ -402,14 +403,9 @@ A4：可重新执行安装脚本，或者手动下载最新版本替换。</p>
         Quantumult X 使用策略组管理分流规则。用户可将规则文件导入应用，通过“policy group”定义不同流量走向，实现国内直连、国外代理、广告拦截等功能的自动分配。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>SSR 的混淆插件有什么作用？</h5></div>
+    <div class="panel-heading"><h5>Surfboard 如何结合策略组实现智能分流？</h5></div>
     <div class="panel-body">
-        混淆插件用于伪装流量，使其看起来像普通的 HTTP 或 TLS 请求。常见类型有 plain、tls1.2_ticket_auth 等。合理设置混淆能有效降低被识别的风险，提升连接成功率。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>如何在 Clash for Android 中导入订阅链接？</h5></div>
-    <div class="panel-body">
-        Clash for Android 支持通过订阅链接快速导入节点。用户只需在配置界面中点击“新建配置”，选择“URL 导入”并粘贴订阅地址即可，程序会自动下载并解析所有节点配置。<hr />    </div>
+        Surfboard 可根据策略组和规则文件自动选择最优节点处理流量。不同应用或网站可分配不同节点，保证低延迟和高速访问，同时减少手动切换节点的操作。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>VMess 的 WebSocket + TLS 配置有哪些好处？</h5></div>
@@ -422,19 +418,24 @@ A4：可重新执行安装脚本，或者手动下载最新版本替换。</p>
         PassWall2 结合策略组和延迟检测功能，可自动选择最优节点处理网页、视频和游戏流量。无需手动切换，保证访问速度、稳定性和整体网络体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>Clash 运行在低配设备上卡顿，如何减轻资源占用？</h5></div>
+    <div class="panel-body">
+        减少 rule-provider 数量、关闭不必要的日志与统计、降低 DNS 轮询频率并禁用内置测速；若使用 TUN 模式，可改为代理模式减少内核负担。必要时升级到更高性能的设备或使用更轻量内核。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>SSR 的协议和混淆组合如何选择？</h5></div>
     <div class="panel-body">
         根据网络封锁情况选择合适协议和混淆组合，例如 tls1.2_ticket_auth 模拟 HTTPS 流量。选择最佳组合可提高抗封锁能力和稳定性，保证节点长期可用。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>如何配置 Sing-box 使用 DoH 加密 DNS？</h5></div>
+    <div class="panel-heading"><h5>如何在 Clash for Android 中导入订阅链接？</h5></div>
     <div class="panel-body">
-        在 dns 模块中添加类型为 doh 的上游，如 `https://1.1.1.1/dns-query`，并指定 bootstrap 地址。启用加密 DNS 可防止 DNS 泄露并加快国际解析速度，提高整体隐私保护。<hr />    </div>
+        Clash for Android 支持通过订阅链接快速导入节点。用户只需在配置界面中点击“新建配置”，选择“URL 导入”并粘贴订阅地址即可，程序会自动下载并解析所有节点配置。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Surfboard 如何结合策略组实现智能分流？</h5></div>
+    <div class="panel-heading"><h5>Shadowrocket 能否自动更新订阅？</h5></div>
     <div class="panel-body">
-        Surfboard 可根据策略组和规则文件自动选择最优节点处理流量。不同应用或网站可分配不同节点，保证低延迟和高速访问，同时减少手动切换节点的操作。    </div>
+        支持。Shadowrocket 可以设置定时更新周期，例如每隔 12 小时或每天自动刷新订阅链接，确保节点列表保持最新状态。这样无需手动更新即可长期稳定使用。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -463,16 +464,16 @@ A4：可重新执行安装脚本，或者手动下载最新版本替换。</p>
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-2-2-vpn-node.htm" title="免费VPN推荐 | 2月2日20.8M/S|免费Singbox节点/Shadowrocket节点/Trojan节点/SSR节点/Clash节点/V2ray节点订阅节点地址">免费VPN推荐 | 2月2日20.8M/S|免费Singbox节点/Shadowrocket节点/Trojan节点/SSR节点/Clash节点/V2ray节点订阅节点地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-2-25-vpn-node.htm" title="免费VPN推荐 | 2月25日21.6M/S|免费SSR节点/V2ray节点/Trojan节点/Shadowrocket节点/Clash节点/Singbox节点订阅节点地址">免费VPN推荐 | 2月25日21.6M/S|免费SSR节点/V2ray节点/Trojan节点/Shadowrocket节点/Clash节点/Singbox节点订阅节点地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-20-vpn-proxy.htm" title="免费VPN推荐 | 3月20日20.7M/S|免费Clash节点/Singbox节点/V2ray节点/Shadowrocket节点/Trojan节点/SSR节点订阅节点地址">免费VPN推荐 | 3月20日20.7M/S|免费Clash节点/Singbox节点/V2ray节点/Shadowrocket节点/Trojan节点/SSR节点订阅节点地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-2-4-node-share.htm" title="免费VPN推荐 | 2月4日18.6M/S|免费Singbox节点/Clash节点/V2ray节点/Shadowrocket节点/SSR节点/Trojan节点订阅节点地址">免费VPN推荐 | 2月4日18.6M/S|免费Singbox节点/Clash节点/V2ray节点/Shadowrocket节点/SSR节点/Trojan节点订阅节点地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-2-6-mianfei-vpn.htm" title="免费VPN推荐 | 2月6日21.8M/S|免费Shadowrocket节点/Clash节点/V2ray节点/Trojan节点/SSR节点/Singbox节点订阅节点地址">免费VPN推荐 | 2月6日21.8M/S|免费Shadowrocket节点/Clash节点/V2ray节点/Trojan节点/SSR节点/Singbox节点订阅节点地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-7-free-vpn.htm" title="免费VPN推荐 | 3月7日20.1M/S|免费Clash节点/Trojan节点/Singbox节点/SSR节点/V2ray节点/Shadowrocket节点订阅节点地址">免费VPN推荐 | 3月7日20.1M/S|免费Clash节点/Trojan节点/Singbox节点/SSR节点/V2ray节点/Shadowrocket节点订阅节点地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-6-mianfei-vpn.htm" title="免费VPN推荐 | 3月6日19.5M/S|免费Clash节点/V2ray节点/Shadowrocket节点/Trojan节点/SSR节点/Singbox节点订阅节点地址">免费VPN推荐 | 3月6日19.5M/S|免费Clash节点/V2ray节点/Shadowrocket节点/Trojan节点/SSR节点/Singbox节点订阅节点地址</a></li>
                         <li class="py-2"><a href="/free-nodes/2026-3-12-node-share-links.htm" title="免费VPN推荐 | 3月12日22.6M/S|免费Trojan节点/Clash节点/Shadowrocket节点/SSR节点/Singbox节点/V2ray节点订阅节点地址">免费VPN推荐 | 3月12日22.6M/S|免费Trojan节点/Clash节点/Shadowrocket节点/SSR节点/Singbox节点/V2ray节点订阅节点地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-2-18-free-node-subscribe.htm" title="免费VPN推荐 | 2月18日19.9M/S|免费Clash节点/Singbox节点/Trojan节点/SSR节点/V2ray节点/Shadowrocket节点订阅节点地址">免费VPN推荐 | 2月18日19.9M/S|免费Clash节点/Singbox节点/Trojan节点/SSR节点/V2ray节点/Shadowrocket节点订阅节点地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-1-30-top-vpn.htm" title="免费VPN推荐 | 1月30日20.1M/S|免费Singbox节点/Shadowrocket节点/Clash节点/Trojan节点/V2ray节点/SSR节点订阅节点地址">免费VPN推荐 | 1月30日20.1M/S|免费Singbox节点/Shadowrocket节点/Clash节点/Trojan节点/V2ray节点/SSR节点订阅节点地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-2-28-top-vpn-node.htm" title="免费VPN推荐 | 2月28日20.3M/S|免费Trojan节点/Clash节点/Singbox节点/Shadowrocket节点/V2ray节点/SSR节点订阅节点地址">免费VPN推荐 | 2月28日20.3M/S|免费Trojan节点/Clash节点/Singbox节点/Shadowrocket节点/V2ray节点/SSR节点订阅节点地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-28-node-share-links.htm" title="免费VPN推荐 | 3月28日20.4M/S|免费Clash节点/Singbox节点/SSR节点/Shadowrocket节点/Trojan节点/V2ray节点订阅节点地址">免费VPN推荐 | 3月28日20.4M/S|免费Clash节点/Singbox节点/SSR节点/Shadowrocket节点/Trojan节点/V2ray节点订阅节点地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-29-vpn-github.htm" title="免费VPN推荐 | 3月29日22.7M/S|免费Trojan节点/Singbox节点/SSR节点/Clash节点/Shadowrocket节点/V2ray节点订阅节点地址">免费VPN推荐 | 3月29日22.7M/S|免费Trojan节点/Singbox节点/SSR节点/Clash节点/Shadowrocket节点/V2ray节点订阅节点地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-21-vpn-github.htm" title="免费VPN推荐 | 3月21日20M/S|免费Trojan节点/Shadowrocket节点/Singbox节点/V2ray节点/Clash节点/SSR节点订阅节点地址">免费VPN推荐 | 3月21日20M/S|免费Trojan节点/Shadowrocket节点/Singbox节点/V2ray节点/Clash节点/SSR节点订阅节点地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-17-vpn-node.htm" title="免费VPN推荐 | 3月17日20.1M/S|免费Singbox节点/Clash节点/Shadowrocket节点/Trojan节点/SSR节点/V2ray节点订阅节点地址">免费VPN推荐 | 3月17日20.1M/S|免费Singbox节点/Clash节点/Shadowrocket节点/Trojan节点/SSR节点/V2ray节点订阅节点地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-30-vpn-github.htm" title="免费VPN推荐 | 3月30日22.9M/S|免费Shadowrocket节点/V2ray节点/Trojan节点/SSR节点/Clash节点/Singbox节点订阅节点地址">免费VPN推荐 | 3月30日22.9M/S|免费Shadowrocket节点/V2ray节点/Trojan节点/SSR节点/Clash节点/Singbox节点订阅节点地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-18-free-vpn-node.htm" title="免费VPN推荐 | 3月18日19.2M/S|免费SSR节点/Shadowrocket节点/Singbox节点/Clash节点/V2ray节点/Trojan节点订阅节点地址">免费VPN推荐 | 3月18日19.2M/S|免费SSR节点/Shadowrocket节点/Singbox节点/Clash节点/V2ray节点/Trojan节点订阅节点地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-22-vpn-free.htm" title="免费VPN推荐 | 3月22日21.7M/S|免费Shadowrocket节点/SSR节点/Trojan节点/Clash节点/V2ray节点/Singbox节点订阅节点地址">免费VPN推荐 | 3月22日21.7M/S|免费Shadowrocket节点/SSR节点/Trojan节点/Clash节点/V2ray节点/Singbox节点订阅节点地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-13-free-node-subscribe.htm" title="免费VPN推荐 | 3月13日18.1M/S|免费V2ray节点/SSR节点/Singbox节点/Clash节点/Shadowrocket节点/Trojan节点订阅节点地址">免费VPN推荐 | 3月13日18.1M/S|免费V2ray节点/SSR节点/Singbox节点/Clash节点/Shadowrocket节点/Trojan节点订阅节点地址</a></li>
                     </ul>
     </div>
 </div>
@@ -484,13 +485,10 @@ A4：可重新执行安装脚本，或者手动下载最新版本替换。</p>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">28</span> <a href="/date/2026-03/" title="2026-03 归档">2026-03</a></h4>
+                <h4><span class="badge" style="float: right;">1</span> <a href="/date/2026-04/" title="2026-04 归档">2026-04</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2026-02/" title="2026-02 归档">2026-02</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">18</span> <a href="/date/2026-01/" title="2026-01 归档">2026-01</a></h4>
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2026-03/" title="2026-03 归档">2026-03</a></h4>
             </li>
                     </ul>
     </div>
